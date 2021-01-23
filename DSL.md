@@ -153,12 +153,12 @@ val query = when {
 This is a very primitive example, but you should get the main idea about the problem.
 Now let's try to write the same query in a more simple way (`andWhere` function available since 0.10.5):
 ```Kotlin
-val query = StarWarsFilms.selectAll()
+var query = StarWarsFilms.selectAll()
 directorName?.let {
-    query.andWhere { StarWarsFilms.director eq it }
+    query = query.andWhere { StarWarsFilms.director eq it }
 }
 sequelId?.let {
-    query.andWhere { StarWarsFilms.sequelId eq it }
+    query = query.andWhere { StarWarsFilms.sequelId eq it }
 }
 ```
 But what if we have conditionaly select from another table and want to join it only when condition is true? 
